@@ -49,3 +49,32 @@ print(d, m, y, sep = '-')
 # 20번
 a, b = input().split('-')
 print(a, b, sep = '')
+
+# 89번
+s, r, n = map(int, input().split())
+res = s
+for i in range(1, n):
+    res = s * (r**i)
+
+print(res)
+
+# 90번
+a, m, d, n = map(int, input().split())
+
+res = a
+
+for i in range(1, n):
+    res = (res*m) + d
+
+print(res)
+
+# 91번
+a, b, c = map(int, input().split())
+d = 1
+
+while True:
+    if not (d%a == 0 and d%b == 0 and d%c == 0):
+        d += 1
+    else:
+        print(d)
+        break
