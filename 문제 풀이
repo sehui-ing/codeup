@@ -12,3 +12,40 @@ b = str(input())
 print(b)
 print(a)
 
+# 14번
+realNumber = float(input())
+print(f"""{realNumber}
+{realNumber}
+{realNumber}""")
+
+# 15번
+a, b = input().split()
+a=int(a)
+b=int(b)
+print(a)
+print(b)
+또는
+a, b = map(int, input().split())
+print(a)
+print(b)
+
+# 16번
+a, b = input().split()
+a, b = b, a
+print(a, b)
+
+# 17번
+s = input()
+print(s, s, s)
+
+# 18번
+a, b = input().split(':')
+print(a, b, sep=':')
+
+# 19번
+y, m, d = input().split('.')
+print(d, m, y, sep = '-')
+
+# 20번
+a, b = input().split('-')
+print(a, b, sep = '')
