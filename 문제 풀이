@@ -172,3 +172,129 @@ for k in answer:
     print(" ".join(k))
 
 # 96번
+settings = []
+
+for i in range(19):
+    arr_elem = list(map(int, input().split()))
+    settings.append(arr_elem)
+
+n = int(input())
+
+for i in range(n):
+    x, y = map(int, input().split())
+    for j in range(0, 19):
+        if settings[j][y-1] == 0:
+            settings[j][y-1] = 1
+        else:
+            settings[j][y-1] = 0
+
+        if settings[x-1][j] == 0:
+            settings[x-1][j] = 1
+        else:
+            settings[x-1][j] = 0
+
+for row in settings:
+    print(*row)
+또는
+settings = []
+
+for i in range(19):
+    arr_elem = list(map(int, input().split()))
+    settings.append(arr_elem)
+
+n = int(input())
+
+for i in range(n):
+    x, y = map(int, input().split())
+    for j in range(19):
+        settings[x-1][j] = str(int(not int(settings[x-1][j])))
+        settings[j][y-1] = str(int(not int(settings[j][y-1])))
+
+for row in settings:
+    print(*row)
+또는
+settings = []
+
+for i in range(19):
+    arr_elem = list(map(int, input().split()))
+    settings.append(arr_elem)
+
+n = int(input())
+
+for i in range(n):
+    x, y = map(int, input().split())
+    for j in range(19):
+        settings[x-1][j] = int(not int(settings[x-1][j]))
+        settings[j][y-1] = int(not int(settings[j][y-1]))
+
+for row in settings:
+    print(*row)
+또는
+settings = []
+
+for i in range(19):
+    arr_elem = list(map(int, input().split()))
+    settings.append(arr_elem)
+
+n = int(input())
+
+for i in range(n):
+    x, y = map(int, input().split())
+    for j in range(19):
+        settings[x-1][j] = int(not settings[x-1][j])
+        settings[j][y-1] = int(not settings[j][y-1])
+
+for row in settings:
+    print(*row)
+
+# 97번
+# 5 5  > 세로 가로 순 격자 크기
+# 3  > 몇 개의 막대 삽입할 것인가 ?
+# 2 0 1 1  > 길이, 방향(0: 가로, 1: 세로), 좌표(x: 가로, y: 세로)
+# 3 1 2 3  > 동일
+# 4 1 2 5  > 동일
+
+h, w = map(int, input().split())
+
+d = []
+
+for i in range(h):
+    d.append([])
+    for j in range(w):
+        d[i].append("0")
+
+n = int(input())
+for i in range(n):
+    length, direct, x, y = map(int, input().split())
+    if direct == 0:
+        for j in range(y-1, y + length - 1):
+            d[x-1][j] = "1"
+    else:
+        for k in range(x-1, x + length - 1):
+            d[k][y-1] = "1"
+
+for _ in d:
+    print(" ".join(_))
+
+# 98번
+matrix = []
+for _ in range(10):  # 개미가 움직일 공간 입력받기
+    matrix.append(input().split())
+
+x, y = 1, 1  # 개미집 출발 지점
+
+
+while x <= 8 and y <= 8:  # 최동, 최남단까지만 진행
+    if matrix[x][y] == "2":  # 먹이 찾았으면 그 위치 9로 바꾸고 중지
+        matrix[x][y] = "9"
+        break
+    matrix[x][y] = "9"  # 먹이가 없을 경우 해당 위치에 자리했으니 9로 바꾸고 진행
+    if matrix[x+1][y] == "1" and matrix[x][y+1] == "1":  # 오른쪽 아래가 1이면 맨 마지막 위치이므로 중지
+        break
+    elif matrix[x][y+1] == "1":  # 열의 한 칸 오른쪽이 1이면 벽이므로 행을 변경
+        x += 1
+    else:  # 그외의 경우 열을 변경
+        y += 1
+
+for i in matrix:  # 출력
+    print(" ".join(i))
